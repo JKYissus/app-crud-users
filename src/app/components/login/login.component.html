@@ -1,0 +1,49 @@
+<section class="vh-100" style="background-color: #e4e6e9;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img src="https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                alt="login form" class="img-fluid"
+                                style="border-radius: 1rem 0 0 1rem; max-width: 100%; height: auto;" />
+                        </div>
+
+                        <div class="col-md-5 col-lg-6 d-flex align-items-center">
+
+                            <div class="card-body p-4 p-lg-5 text-black">
+
+                                <form [formGroup]="loginForm" autocomplete="off">
+
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="username">Usuario</label>
+                                        <input type="text" autocomplete="new-username" id="username"
+                                            class="form-control form-control-lg" formControlName="username" />
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="password">Password</label>
+                                        <input type="password" autocomplete="new-password" id="password"
+                                            class="form-control form-control-lg" formControlName="password" />
+                                    </div>
+
+                                    <div class="pt-1 mb-4">
+                                        <button class="btn btn-dark btn-lg btn-block" (click)="login()" type="submit"
+                                            [disabled]="!loginForm.valid">Iniciar sesión</button>
+                                    </div>
+                                    <a routerLink="/changePassword" style="color: #393f81;">Olvidaste tu contraseña?</a>
+
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">No tienes cuenta? <a
+                                            routerLink="/register" style="color: #393f81;">Registrate aqui</a></p>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

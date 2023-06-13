@@ -1,0 +1,50 @@
+<div class="container" style="margin: 20px;">
+    <h2>Listado de Usuarios</h2>
+    <form [formGroup]="searchForm" (submit)="getUsers()">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Buscar por usuario" formControlName="usuario">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" type="submit">Buscar</button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of filteredUsers">
+                <td>{{ user.username }}</td>
+                <td>{{ user.nombres }}</td>
+                <td>{{ user.apellidos }}</td>
+                <td>{{ user.correo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" (click)="prevPage()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item" *ngFor="let page of mostrarTotalPaginas"
+            [ngClass]="{ 'active': currentPage + 1 === page }">
+            <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+        </li>
+        <li class="page-item" [ngClass]="{ 'disabled': currentPage === totalPages }">
+            <a class="page-link" (click)="nextPage()" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</div>

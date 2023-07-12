@@ -8,6 +8,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { AuthGuardGuard } from './auth-guard.guard';
 import { HomeComponent } from './components/home/home.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ChatsComponent } from './components/chats/chats.component';
+import { ChatMessageComponent } from './components/chat-message/chat-message.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,13 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
+      {
+        path: 'chats', component: ChatsComponent, children: [
+
+          { path: ':id', component: ChatMessageComponent },
+
+        ]
+      },
       { path: 'usuarios', component: UsuarioComponent },
       { path: 'perfil', component: PerfilComponent },
     ],

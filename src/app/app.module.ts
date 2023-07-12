@@ -14,6 +14,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ChatsComponent } from './components/chats/chats.component';
+import { ChatMessageComponent } from './components/chat-message/chat-message.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     PerfilComponent,
     DashboardComponent,
     HomeComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ChatsComponent,
+    ChatMessageComponent
   ],
   imports: [
     BrowserModule,

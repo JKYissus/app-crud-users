@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { TimerService } from 'src/app/services/api.time.service';
 import { SwAlertService } from 'src/app/services/sw.alert.service';
-import { validarPassword } from 'src/app/validator/password-validator';
 
 interface User {
   username: string;
@@ -85,25 +84,37 @@ export class PerfilComponent implements OnInit {
     this.time.startTimer(6, 0);
   }
 
+  validarCorreo(): boolean {
+    let user: UserSession = JSON.parse(sessionStorage.getItem('user')!.toString());
+
+    if (user.correo != this.formUser.get('correo')!.value) {
+      return false;
+    }
+
+    return true;
+  }
+
   codigoverificacion() {
+
     if (this.habilidarBtnEditar) {
       return;
     }
+
+    this.correovalido = true;
     let user: UserSession = JSON.parse(sessionStorage.getItem('user')!.toString());
 
-    this.habilidarBtnEditar = true;
     if (!this.formUser.get('correo')?.value) {
       this.habilidarBtnEditar = false;
       return;
     }
 
-    if (user.correo == this.formUser.get('correo')!.value) {
+    if (this.validarCorreo()) {
       this.guardarPerfil();
       return;
     }
 
     this.correoEnviado = true;
-    this.service.enviarCodigo(this.formUser.get('correo')?.value!).subscribe({
+    this.service.enviarCodigo(this.formUser.get('correo')!.value!).subscribe({
       next: (data) => {
         this.habilidarBtnEditar = true;
       }, error: (error) => {
@@ -164,12 +175,12 @@ export class PerfilComponent implements OnInit {
         this.Swal.showError(textoModificado).then((result) => {
           if (!result.isConfirmed) {
             this.habilidarBtnEditar = true;
+            this.getUserLoged();
             return;
           }
         });
       }
     })
-
   }
 
   getUserLoged() {
@@ -214,4 +225,26 @@ export class PerfilComponent implements OnInit {
     });
 
   }
+
+  validarFormulario(): boolean {
+    let userid: UserSession = JSON.parse(sessionStorage.getItem('user')!.toString());
+    let id = userid.id;
+
+    const exist = this.filteredUsers.find(idUser => idUser.id === id);
+
+    if (!this.formUser.valid) {
+      return false;
+    }
+
+    if (exist!.username != this.formUser.value.username ||
+      exist!.correo != this.formUser.value.correo ||
+      exist!.apellidos != this.formUser.value.apellidos ||
+      exist!.nombres != this.formUser.value.nombres) {
+
+      return true;
+
+    }
+    return false;
+  }
+
 }

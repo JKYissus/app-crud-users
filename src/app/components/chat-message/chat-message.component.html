@@ -1,0 +1,31 @@
+<div class="content">
+    <div class="profile-image profile">
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Robot.png"
+            alt="Robot" width="50" height="50" />
+    </div>
+    <div class="usertitle">
+        <h5>{{userto}}</h5>
+    </div>
+
+</div>
+
+<div class="" style="display: flex; background-color: rgba(228, 237, 248, 0.966); height: 100%;">
+    <div class="messages">
+        <!-- Aquí van los mensajes de los usuarios -->
+    </div>
+</div>
+
+<div class=""
+    style="display: grid; grid-template-columns: 1fr max-content; align-items: center; margin-top: 1%; background-color: #f0f2f5;">
+    <div class="chat-item">
+        <textarea
+            style="border-radius: 10px; border: none; width: 100%; padding: 5px 8px; resize: none; min-height: 35px; max-height: 300px; overflow-y: auto;"
+            rows="1" (input)="autoResizeTextArea($event.target)"></textarea>
+    </div>
+    <div style="margin-right: 10px; background-color: #f0f2f5;">
+        <button id="sendButton" class="send-button  btn-primary"
+            style="border-radius: 35px; width:40px; height: 40px; border: none;">
+            <img src="https://img.icons8.com/?size=512&id=ZznWGhUzgWtS&format=png" alt="Robot" width="30" height="30">
+        </button>
+    </div>
+</div>

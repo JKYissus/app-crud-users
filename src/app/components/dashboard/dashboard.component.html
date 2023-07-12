@@ -1,10 +1,14 @@
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" routerLink="home">Coppel Usuarios</a>
-    <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse"
-        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-nav">
+    <div class="navbar-brand">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" routerLink="home">Coppel Usuarios</a>
+        <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="navbar-nav" style="margin-right: 10px; margin-left: 10px;">
         <div class="nav-item text-nowrap">
             <button type="button" class="btn btn-secondary" (click)="logOut()">Sign out</button>
         </div>
@@ -13,37 +17,40 @@
 
 <div class="container-fluid">
     <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="position-sticky pt-3">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar"
+            [ngClass]="{ 'collapse': !sidebarOpen }">
+            <div class="position-sticky">
                 <ul class="nav flex-column" style="text-align: center;">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="home">
+                        <a class="nav-link" routerLink="home" routerLinkActive="active">
                             <span data-feather="home"></span>
                             Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="usuarios">
+                        <a class="nav-link" routerLink="chats" routerLinkActive="active">
+                            <span data-feather="chats"></span>
+                            Chats
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="usuarios" routerLinkActive="active">
                             <span data-feather="usuarios"></span>
                             Usuarios
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="perfil">
+                        <a class="nav-link" routerLink="perfil" routerLinkActive="active">
                             <span data-feather="perfil"></span>
                             Perfil
                         </a>
                     </li>
-                </ul>
 
+                </ul>
             </div>
         </nav>
-
-
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
             <router-outlet></router-outlet>
-
         </main>
     </div>
 </div>

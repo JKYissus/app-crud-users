@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Route, Router, RouterLinkActive } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { SwAlertService } from 'src/app/services/sw.alert.service';
 
@@ -41,7 +42,8 @@ export class UsuarioComponent implements OnInit {
 
   constructor(
     private service: ApiService,
-    private Swal: SwAlertService
+    private Swal: SwAlertService,
+    private router: Router
   ) { }
 
   get totalPages(): number {
@@ -88,6 +90,11 @@ export class UsuarioComponent implements OnInit {
 
   }
 
+  searchFromSubmit() {
+    this.currentPage = 0;
+    this.getUsers();
+  }
+
 
   getUsers() {
     this.service.getUsers(this.currentPage, this.pageSize, this.searchForm.value.usuario!).subscribe({
@@ -117,5 +124,9 @@ export class UsuarioComponent implements OnInit {
         console.log(error.error);
       }
     });
+  }
+
+  chatUsuario(user: string) {
+    this.router.navigate(['/dashboard/chats/' + user]);
   }
 }

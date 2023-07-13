@@ -27,7 +27,7 @@
         <div class="col-md-2">
             <button style="margin-top: 10px;" type="submit" class="btn btn-primary"
                 (click)="codigoverificacion(); codigoVerificado.reset(); resetTimer(); startTimer()"
-                data-bs-toggle="modal" [disabled]="!formUser.valid" data-bs-target="#validacorreo">Editar
+                data-bs-toggle="modal" [disabled]="!validarFormulario()" data-bs-target="#validacorreo">Editar
             </button>
         </div>
     </div>
@@ -35,7 +35,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" *ngIf="correovalido" id="validacorreo" #validacorreo data-bs-backdrop="static"
+<div class="modal fade" *ngIf="!validarCorreo()" id="validacorreo" #validacorreo data-bs-backdrop="static"
     data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalcorreo" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

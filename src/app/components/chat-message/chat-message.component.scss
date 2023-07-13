@@ -1,0 +1,76 @@
+element.style {
+    background-color: #f0f2f5;
+
+}
+
+.content {
+    background-color: #f0f2f5;
+    display: grid;
+    grid-template-columns: max-content 10fr;
+    gap: 30px;
+    min-height: 9%;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.usertitle {
+    margin: 0px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.chat-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.btn-send {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.scroll-wrapper {
+    overflow-y: auto;
+    height: 100%;
+    padding-right: 10px;
+    margin: 0;
+    border: transparent;
+}
+
+.scroll-wrapper::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.send-button {
+    transform: scale(1);
+    transition: transform 0.3s;
+}
+
+.send-button:hover {
+    transform: scale(1.1);
+}

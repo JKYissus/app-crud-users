@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,9 +8,12 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   isMenuOpen: boolean = false;
+  isMobile: boolean = false;
+  sidebarOpen: boolean = false;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private renderer: Renderer2, private elementRef: ElementRef
   ) { }
 
   ngOnInit(): void {
@@ -28,5 +31,22 @@ export class DashboardComponent implements OnInit {
     sessionStorage.removeItem('timeSession');
 
     this.router.navigate(['login']);
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const sidebarElement = this.elementRef.nativeElement.querySelector('#sidebarMenu');
+
+    if (this.sidebarOpen && !sidebarElement.contains(event.target)) {
+      this.closeSidebar();
+    }
+  }
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+
+  closeSidebar() {
+    this.sidebarOpen = false;
   }
 }
